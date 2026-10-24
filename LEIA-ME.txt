@@ -1,0 +1,27 @@
+CHURRASCO NA BRASA — APP DE FLUXO DE CAIXA
+
+Arquivos:
+- index.html: aplicativo
+- manifest.json: configurações de instalação
+- sw.js: suporte offline após a primeira visita
+- assets/logo.png: logo
+
+PUBLICAR NO GITHUB PAGES
+1. Crie um repositório público chamado churrasco-na-brasa.
+2. Envie todos os arquivos desta pasta mantendo a estrutura (index.html, manifest.json, sw.js e pasta assets).
+3. No GitHub, abra Settings > Pages.
+4. Em Build and deployment, selecione Deploy from a branch, branch main e pasta /(root), e salve.
+5. Aguarde a publicação e abra o endereço HTTPS no notebook/celular.
+6. No Chrome/Edge do notebook: use o botão “Instalar app” quando aparecer, ou Menu > Instalar Churrasco na Brasa.
+   No Android Chrome: Menu (⋮) > Adicionar à tela inicial / Instalar app.
+
+IMPORTANTE
+- A instalação como PWA requer hospedagem HTTPS (por exemplo GitHub Pages); abrir o HTML diretamente como arquivo não permite instalação PWA completa.
+- Os dados ficam no armazenamento local do navegador e não sincronizam entre dispositivos. Faça backups em Dados e backup.
+- O aplicativo registra valores manualmente; não se conecta automaticamente a maquininha, banco ou sistema fiscal.
+
+
+ATUALIZAÇÕES DA VERSÃO 2
+- A prévia do início mostra somente as vendas da data atual.
+- Os campos de data começam preenchidos com a data de hoje e se atualizam na virada do dia se o app permanecer aberto.
+- A logo enviada foi incluída em assets/logo.png e usada no ícone do app.

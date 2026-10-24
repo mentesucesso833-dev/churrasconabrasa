@@ -1,0 +1,18 @@
+{
+  "name": "Churrasco na Brasa - Gestão",
+  "short_name": "Na Brasa",
+  "description": "Vendas, entradas, saídas e faturamento mensal",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0e0b",
+  "theme_color": "#101410",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

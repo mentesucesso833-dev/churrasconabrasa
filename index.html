@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101410">
+<meta name="description" content="Aplicativo de vendas, entradas, saídas e faturamento da Churrasco na Brasa.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="assets/logo.png">
+<title>Churrasco na Brasa • Gestão</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0e0b;--panel:#151a15;--panel2:#202720;--line:#303a30;--text:#f7f8f5;--muted:#aab4a9;--green:#26b653;--green2:#8af0a6;--red:#ef493d;--red2:#ffaaa2;--yellow:#ffd447;--shadow:0 12px 32px #0005}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top right,#142315 0,transparent 36%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:1120px;margin:auto;padding:0 16px 38px}.topbar{position:sticky;top:0;z-index:5;background:#0b0e0bf0;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 16px}.topinner{max-width:1120px;margin:auto;display:flex;align-items:center;gap:12px}.logo{width:52px;height:52px;object-fit:contain;border-radius:50%;background:#000}.brand{flex:1;min-width:0}.brand h1{font-size:clamp(17px,3vw,23px);margin:0;font-weight:900;letter-spacing:.2px}.brand h1 span{color:var(--yellow)}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}.install{display:none;border:1px solid #557455;background:#1d351f;color:#b5ffc4;border-radius:10px;padding:9px 12px;font-weight:800}.install.show{display:block}.nav{display:flex;gap:8px;overflow:auto;padding:17px 0 14px;scrollbar-width:thin}.navbtn{white-space:nowrap;border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:12px;padding:11px 14px;font-weight:750}.navbtn.active{background:var(--green);border-color:var(--green);color:#061108}.view{display:none}.view.active{display:block}.welcome{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:8px 0 18px}.welcome h2{font-size:25px;margin:0}.welcome p{color:var(--muted);margin:5px 0 0}.datebadge{color:var(--yellow);font-size:13px;font-weight:800}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.metric,.panel{border:1px solid var(--line);border-radius:17px;background:linear-gradient(145deg,#181e18,#111511);box-shadow:var(--shadow)}.metric{padding:16px;min-width:0}.metric .label{font-size:12px;color:var(--muted);font-weight:700}.metric .value{font-size:clamp(19px,2.7vw,27px);font-weight:900;margin:8px 0 4px;overflow-wrap:anywhere}.metric .sub{font-size:12px;color:var(--muted)}.green{color:var(--green2)}.red{color:var(--red2)}.yellow{color:var(--yellow)}.panel{padding:18px;margin-top:16px}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}.panel h3{margin:0;font-size:18px}.muted{color:var(--muted)}.btn{border:0;border-radius:10px;padding:11px 14px;background:var(--green);color:#061108;font-weight:850}.btn.secondary{background:var(--panel2);border:1px solid var(--line);color:var(--text)}.btn.danger{background:#4a1b18;border:1px solid #80352f;color:#ffc4bf}.btn.yellowbtn{background:var(--yellow);color:#211b00}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-size:13px;color:var(--muted);font-weight:700}input,select{width:100%;min-width:0;background:#0a0d0a;border:1px solid #394339;border-radius:10px;padding:12px;color:var(--text)}input:focus,select:focus{outline:2px solid var(--green);border-color:transparent}.formactions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.hint{font-size:12px;color:var(--muted);margin:11px 0 0}.quickstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.quick{background:#0d120d;border:1px solid var(--line);border-radius:12px;padding:13px}.quick span{display:block;color:var(--muted);font-size:12px}.quick strong{display:block;font-size:18px;margin-top:5px}.list{display:flex;flex-direction:column;gap:9px}.item{display:flex;align-items:center;gap:12px;padding:12px;background:#0d120d;border:1px solid var(--line);border-radius:12px}.itemicon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:#17351f;flex-shrink:0}.itemicon.out{background:#3a1b18}.itemmain{min-width:0;flex:1}.itemmain b{display:block;overflow-wrap:anywhere}.itemmain small{display:block;color:var(--muted);font-size:12px}.itemamount{text-align:right;font-weight:900;white-space:nowrap}.itemamount small{display:block;color:var(--muted);font-weight:500;font-size:11px}.empty{padding:25px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-bottom:14px}.filters .field{flex:1;min-width:140px}.monthbars{display:flex;flex-direction:column;gap:12px}.barrow{display:grid;grid-template-columns:85px minmax(30px,1fr) 105px;gap:10px;align-items:center}.bartrack{height:12px;background:#293129;border-radius:99px;overflow:hidden}.barfill{height:100%;background:linear-gradient(90deg,var(--green),var(--yellow));border-radius:99px;min-width:0}.barlabel{font-size:12px;color:var(--muted)}.barvalue{text-align:right;font-size:12px;font-weight:800}.foot{text-align:center;color:#768176;font-size:12px;padding:22px 0 0}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#eaffef;color:#0a2510;padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:var(--shadow);transition:.2s;z-index:20;max-width:90vw}.toast.show{opacity:1;transform:translate(-50%,0)}.hidden{display:none!important}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.metric{padding:13px}.welcome h2{font-size:22px}.panel{padding:14px}.quickstats{grid-template-columns:1fr}.topbar{padding:10px 12px}.app{padding:0 12px 30px}.navbtn{padding:10px 12px}.install{padding:8px 9px;font-size:12px}}
+@media(max-width:420px){.logo{width:43px;height:43px}.brand p{font-size:10px}.install{font-size:11px}.formgrid{grid-template-columns:1fr}.field.full{grid-column:auto}.item{gap:8px;padding:10px}.itemamount{font-size:13px}.barrow{grid-template-columns:68px minmax(20px,1fr) 88px;gap:6px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topinner">
+<img src="assets/logo.png" class="logo" alt="Logo Churrasco na Brasa">
+<div class="brand"><h1>CHURRASCO <span>NA BRASA</span></h1><p>Vendas • Entradas • Saídas • Faturamento</p></div>
+<button id="installBtn" class="install">＋ Instalar app</button>
+</div></header>
+<main class="app">
+<nav class="nav" aria-label="Navegação principal">
+<button class="navbtn active" data-view="inicio">⌂ Início</button>
+<button class="navbtn" data-view="entradas">↙ Entradas</button>
+<button class="navbtn" data-view="saidas">↗ Saídas</button>
+<button class="navbtn" data-view="faturamento">▥ Faturamento</button>
+<button class="navbtn" data-view="dados">⚙ Dados e backup</button>
+</nav>
+
+<section class="view active" id="view-inicio">
+<div class="welcome"><div><h2>Visão geral</h2><p>Registre as vendas e acompanhe o movimento do caixa.</p></div><div class="datebadge" id="todayLabel"></div></div>
+<div class="panel">
+<div class="panelhead"><h3>＋ Registrar venda</h3><span class="muted" style="font-size:12px">Preencha os 3 campos principais</span></div>
+<form id="saleForm">
+<div class="formgrid">
+<div class="field"><label for="saleProduct">Nome do produto</label><input id="saleProduct" required maxlength="100" placeholder="Ex.: churrasco completo"></div>
+<div class="field"><label for="saleAmount">Valor da venda (R$)</label><input id="saleAmount" required inputmode="decimal" placeholder="Ex.: 35,00"></div>
+<div class="field"><label for="salePayment">Forma de pagamento</label><select id="salePayment"><option>Pix</option><option>Dinheiro</option><option>Cartão</option><option>Fiado / pagamento pendente</option></select></div>
+<div class="field"><label for="saleDate">Data da venda</label><input id="saleDate" type="date" required></div>
+</div>
+<div class="formactions"><button class="btn" type="submit">Salvar venda</button><button class="btn secondary" type="reset">Limpar campos</button></div>
+<p class="hint">A data começa automaticamente no dia de hoje. A prévia mostra somente as vendas da data atual; vendas de outros dias ficam no extrato de Entradas. A venda aparece automaticamente no extrato de Entradas. Vendas fiadas ficam marcadas como pendentes e não entram no total recebido até serem recebidas.</p>
+</form>
+</div>
+<div class="grid" style="margin-top:16px">
+<div class="metric"><div class="label">Vendas recebidas hoje</div><div class="value green" id="homeTodaySales">R$ 0,00</div><div class="sub">Dinheiro recebido</div></div>
+<div class="metric"><div class="label">Despesas de hoje</div><div class="value red" id="homeTodayExpenses">R$ 0,00</div><div class="sub">Saídas registradas</div></div>
+<div class="metric"><div class="label">Saldo operacional hoje</div><div class="value" id="homeTodayNet">R$ 0,00</div><div class="sub">Vendas recebidas − despesas</div></div>
+<div class="metric"><div class="label">Fiado pendente</div><div class="value yellow" id="homePending">R$ 0,00</div><div class="sub">A receber</div></div>
+</div>
+<div class="panel"><div class="panelhead"><h3>Prévia das vendas</h3><button class="btn secondary" data-go="entradas" type="button">Ver extrato</button></div><div id="previewSales" class="list"></div></div>
+</section>
+
+<section class="view" id="view-entradas">
+<div class="welcome"><div><h2>Entradas</h2><p>Extrato de vendas e valores recebidos.</p></div></div>
+<div class="grid">
+<div class="metric"><div class="label">Total recebido hoje</div><div class="value green" id="inToday">R$ 0,00</div></div>
+<div class="metric"><div class="label">Total recebido na semana</div><div class="value green" id="inWeek">R$ 0,00</div></div>
+<div class="metric"><div class="label">Vendas do mês</div><div class="value" id="inMonth">R$ 0,00</div></div>
+<div class="metric"><div class="label">Total pendente / fiado</div><div class="value yellow" id="inPending">R$ 0,00</div></div>
+</div>
+<div class="panel"><div class="panelhead"><h3>Extrato das vendas</h3></div><div class="filters"><div class="field"><label for="inFrom">De</label><input id="inFrom" type="date"></div><div class="field"><label for="inTo">Até</label><input id="inTo" type="date"></div><div class="field"><label for="inPay">Pagamento</label><select id="inPay"><option value="">Todas as formas</option><option>Pix</option><option>Dinheiro</option><option>Cartão</option><option>Fiado / pagamento pendente</option></select></div></div><div id="salesList" class="list"></div></div>
+</section>
+
+<section class="view" id="view-saidas">
+<div class="welcome"><div><h2>Saídas</h2><p>Registre os gastos da churrascaria.</p></div></div>
+<div class="panel">
+<div class="panelhead"><h3>＋ Registrar despesa</h3></div>
+<form id="expenseForm"><div class="formgrid">
+<div class="field full"><label for="expenseDesc">Descrição do gasto</label><input id="expenseDesc" required maxlength="100" placeholder="Ex.: compra de carvão"></div>
+<div class="field"><label for="expenseAmount">Valor (R$)</label><input id="expenseAmount" required inputmode="decimal" placeholder="Ex.: 80,00"></div>
+<div class="field"><label for="expenseCategory">Categoria</label><select id="expenseCategory"><option>Carvão</option><option>Carnes</option><option>Bebidas</option><option>Temperos e acompanhamentos</option><option>Gás</option><option>Funcionários</option><option>Energia / água</option><option>Aluguel</option><option>Transporte</option><option>Manutenção</option><option>Embalagens</option><option>Outros</option></select></div>
+<div class="field"><label for="expensePayment">Forma de pagamento</label><select id="expensePayment"><option>Pix</option><option>Dinheiro</option><option>Cartão</option><option>Outros</option></select></div>
+<div class="field"><label for="expenseDate">Data do gasto</label><input id="expenseDate" type="date" required></div>
+</div><div class="formactions"><button class="btn" type="submit">Salvar despesa</button><button class="btn secondary" type="reset">Limpar campos</button></div></form>
+</div>
+<div class="grid" style="margin-top:16px">
+<div class="metric"><div class="label">Saídas de hoje</div><div class="value red" id="outToday">R$ 0,00</div></div>
+<div class="metric"><div class="label">Saídas na semana</div><div class="value red" id="outWeek">R$ 0,00</div></div>
+<div class="metric"><div class="label">Saídas no mês</div><div class="value" id="outMonth">R$ 0,00</div></div>
+<div class="metric"><div class="label">Saldo operacional da semana</div><div class="value" id="outWeekNet">R$ 0,00</div></div>
+</div>
+<div class="panel"><div class="panelhead"><h3>Extrato das despesas</h3></div><div id="expenseList" class="list"></div></div>
+</section>
+
+<section class="view" id="view-faturamento">
+<div class="welcome"><div><h2>Faturamento mensal</h2><p>Veja o total vendido em cada mês, somado automaticamente.</p></div></div>
+<div class="panel"><div class="filters"><div class="field"><label for="billMonth">Selecionar mês</label><input id="billMonth" type="month"></div></div>
+<div class="grid">
+<div class="metric"><div class="label">Faturamento recebido no mês</div><div class="value green" id="billReceived">R$ 0,00</div></div>
+<div class="metric"><div class="label">Vendas fiadas no mês</div><div class="value yellow" id="billPending">R$ 0,00</div></div>
+<div class="metric"><div class="label">Despesas do mês</div><div class="value red" id="billExpenses">R$ 0,00</div></div>
+<div class="metric"><div class="label">Resultado operacional</div><div class="value" id="billNet">R$ 0,00</div></div>
+</div>
+<div class="panel" style="box-shadow:none;margin-top:16px"><div class="panelhead"><h3>Faturamento por dia do mês</h3></div><div id="monthBars" class="monthbars"></div></div>
+<div class="panel" style="box-shadow:none"><div class="panelhead"><h3>Vendas do mês selecionado</h3></div><div id="monthSales" class="list"></div></div>
+</div>
+</section>
+
+<section class="view" id="view-dados">
+<div class="welcome"><div><h2>Dados e backup</h2><p>Proteja o histórico financeiro da Churrasco na Brasa.</p></div></div>
+<div class="panel"><h3>Backup dos dados</h3><p class="muted">Os registros ficam guardados neste dispositivo e navegador. Exporte uma cópia regularmente. O app não envia seus dados para a internet.</p><div class="formactions"><button class="btn" id="backupBtn">Baixar backup completo</button><button class="btn secondary" id="csvBtn">Exportar CSV para Excel</button><label class="btn secondary" for="restoreFile" style="cursor:pointer">Restaurar backup</label><input type="file" id="restoreFile" accept=".json,application/json" class="hidden"></div><div class="quickstats" style="margin-top:16px"><div class="quick"><span>Total de vendas</span><strong id="countSales">0</strong></div><div class="quick"><span>Total de despesas</span><strong id="countExpenses">0</strong></div><div class="quick"><span>Registros no sistema</span><strong id="countAll">0</strong></div></div><button class="btn danger" id="wipeBtn" style="margin-top:18px">Apagar todos os registros</button></div>
+</section>
+<div class="foot">Churrasco na Brasa • Aplicativo de gestão financeira • Faça backups regularmente.</div>
+</main>
+<div id="toast" class="toast"></div>
+<script>
+const KEY='cnab_pwa_v1';let data=[];try{data=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(data))data=[]}catch(e){data=[]}
+const $=id=>document.getElementById(id);
+const today=()=>{let d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const monthNow=()=>today().slice(0,7);
+const money=n=>Number(n||0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const amount=s=>{let v=String(s).trim().replace(/R\$/gi,'').replace(/\s/g,'');if(v.includes(','))v=v.replace(/\./g,'').replace(',','.');let n=Number(v);return Number.isFinite(n)?Math.round(n*100)/100:NaN};
+const persist=()=>localStorage.setItem(KEY,JSON.stringify(data));
+const fmt=s=>{if(!s)return '';let d=new Date(s+'T12:00:00');return d.toLocaleDateString('pt-BR')};
+const weekStart=s=>{let d=new Date(s+'T12:00:00');d.setDate(d.getDate()-(d.getDay()+6)%7);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const addDays=(s,n)=>{let d=new Date(s+'T12:00:00');d.setDate(d.getDate()+n);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const inWeek=(x,s)=>x.date>=weekStart(s)&&x.date<=addDays(weekStart(s),6);
+const received=x=>x.status!=='pendente';
+const sum=(list,type,onlyReceived=false)=>list.filter(x=>(!type||x.type===type)&&(!onlyReceived||received(x))).reduce((a,x)=>a+x.amount,0);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function toast(s){$('toast').textContent=s;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),2300)}
+function row(x){let sale=x.type==='sale';return `<div class="item"><div class="itemicon ${sale?'':'out'}">${sale?'🧾':'🪵'}</div><div class="itemmain"><b>${esc(sale?x.product:x.description)}</b><small>${fmt(x.date)} • ${esc(sale?x.payment:x.payment+' • '+x.category)}${x.status==='pendente'?' • FIADO PENDENTE':''}</small></div><div class="itemamount ${sale?'green':'red'}">${money(x.amount)}<small>${sale?'Venda':'Despesa'}</small></div><button class="btn danger" data-del="${x.id}" title="Excluir registro" style="padding:7px 9px">×</button></div>`}
+function list(target,arr,empty){$(target).innerHTML=arr.length?arr.slice().sort((a,b)=>b.date.localeCompare(a.date)||b.created-b.created).map(row).join(''):`<div class="empty">${empty}</div>`}
+function daySales(s){return data.filter(x=>x.type==='sale'&&x.date===s)}
+function dayExpenses(s){return data.filter(x=>x.type==='expense'&&x.date===s)}
+function weekData(s){return data.filter(x=>inWeek(x,s))}
+function render(){let t=today(),m=monthNow(),todayData=data.filter(x=>x.date===t),week=weekData(t),month=data.filter(x=>x.date.startsWith(m)),salesReceived=sum(todayData.filter(x=>x.type==='sale'),'sale',true),expenseToday=sum(todayData,'expense'),pending=data.filter(x=>x.type==='sale'&&!received(x));
+$('todayLabel').textContent=new Date(t+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'long',day:'2-digit',month:'long'});
+$('homeTodaySales').textContent=money(salesReceived);$('homeTodayExpenses').textContent=money(expenseToday);$('homeTodayNet').textContent=money(salesReceived-expenseToday);$('homePending').textContent=money(sum(pending));
+list('previewSales',data.filter(x=>x.type==='sale'&&x.date===t).slice().sort((a,b)=>b.created-a.created).slice(0,5),'Nenhuma venda registrada para hoje. As vendas de outros dias aparecem no extrato de Entradas.');
+$('inToday').textContent=money(sum(daySales(t),'sale',true));$('inWeek').textContent=money(sum(week.filter(x=>x.type==='sale'),'sale',true));$('inMonth').textContent=money(sum(month.filter(x=>x.type==='sale'),'sale',true));$('inPending').textContent=money(sum(pending));
+let inList=data.filter(x=>x.type==='sale'&&(!$('inFrom').value||x.date>=$('inFrom').value)&&(!$('inTo').value||x.date<=$('inTo').value)&&(!$('inPay').value||x.payment===$('inPay').value));list('salesList',inList,'Nenhuma venda corresponde aos filtros.');
+$('outToday').textContent=money(sum(dayExpenses(t),'expense'));$('outWeek').textContent=money(sum(week,'expense'));$('outMonth').textContent=money(sum(month,'expense'));$('outWeekNet').textContent=money(sum(week.filter(x=>x.type==='sale'),'sale',true)-sum(week,'expense'));
+list('expenseList',data.filter(x=>x.type==='expense'),'Nenhuma despesa registrada ainda.');
+renderBilling();$('countSales').textContent=data.filter(x=>x.type==='sale').length;$('countExpenses').textContent=data.filter(x=>x.type==='expense').length;$('countAll').textContent=data.length}
+function renderBilling(){let m=$('billMonth').value||monthNow(),arr=data.filter(x=>x.date.startsWith(m)),sales=arr.filter(x=>x.type==='sale'),expenses=arr.filter(x=>x.type==='expense'),receivedSales=sum(sales,'sale',true),pending=sum(sales.filter(x=>!received(x)),'sale'),expenseTotal=sum(expenses,'expense');$('billReceived').textContent=money(receivedSales);$('billPending').textContent=money(pending);$('billExpenses').textContent=money(expenseTotal);$('billNet').textContent=money(receivedSales-expenseTotal);
+let daysInMonth=new Date(Number(m.slice(0,4)),Number(m.slice(5,7)),0).getDate(),daily=Array.from({length:daysInMonth},(_,i)=>{let d=m+'-'+String(i+1).padStart(2,'0');return {d,v:sum(sales.filter(x=>x.date===d),'sale',true)}}),max=Math.max(1,...daily.map(x=>x.v));$('monthBars').innerHTML=daily.map(x=>`<div class="barrow"><div class="barlabel">${fmt(x.d)}</div><div class="bartrack"><div class="barfill" style="width:${x.v/max*100}%"></div></div><div class="barvalue">${money(x.v)}</div></div>`).join('');list('monthSales',sales,'Nenhuma venda neste mês.')}
+function nav(id){document.querySelectorAll('.navbtn').forEach(b=>b.classList.toggle('active',b.dataset.view===id));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+id));if(id==='faturamento')renderBilling();window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.view)));document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>nav(b.dataset.go)));
+$('saleForm').addEventListener('submit',e=>{e.preventDefault();let a=amount($('saleAmount').value);if(!Number.isFinite(a)||a<=0){toast('Informe um valor válido.');return}let pay=$('salePayment').value;data.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),type:'sale',product:$('saleProduct').value.trim(),amount:a,payment:pay,date:$('saleDate').value,status:pay==='Fiado / pagamento pendente'?'pendente':'received',created:Date.now()});persist();render();$('saleForm').reset();$('saleDate').value=today();toast('Venda registrada!');});
+$('expenseForm').addEventListener('submit',e=>{e.preventDefault();let a=amount($('expenseAmount').value);if(!Number.isFinite(a)||a<=0){toast('Informe um valor válido.');return}data.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),type:'expense',description:$('expenseDesc').value.trim(),amount:a,category:$('expenseCategory').value,payment:$('expensePayment').value,date:$('expenseDate').value,status:'paid',created:Date.now()});persist();render();$('expenseForm').reset();$('expenseDate').value=today();toast('Despesa registrada!')});
+document.addEventListener('click',e=>{let b=e.target.closest('[data-del]');if(b){let x=data.find(x=>x.id===b.dataset.del);if(x&&confirm('Excluir este registro?')){data=data.filter(y=>y.id!==b.dataset.del);persist();render();toast('Registro excluído.')}}});
+['inFrom','inTo','inPay'].forEach(id=>$(id).addEventListener('change',render));$('billMonth').addEventListener('change',renderBilling);
+function download(name,content,type){let blob=new Blob([content],{type}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
+$('backupBtn').addEventListener('click',()=>download('backup-churrasco-na-brasa-'+today()+'.json',JSON.stringify({app:'Churrasco na Brasa',version:1,exportedAt:new Date().toISOString(),data},null,2),'application/json'));
+$('csvBtn').addEventListener('click',()=>{let rows=[['Data','Tipo','Produto/Descrição','Categoria','Pagamento','Situação','Valor'] ,...data.map(x=>[x.date,x.type==='sale'?'Venda':'Despesa',x.product||x.description,x.category||'',x.payment,x.status==='pendente'?'Pendente':'Recebido/pago',x.amount.toFixed(2).replace('.',',')])];download('churrasco-na-brasa-'+today()+'.csv','\ufeff'+rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(';')).join('\r\n'),'text/csv;charset=utf-8')});
+$('restoreFile').addEventListener('change',async e=>{let f=e.target.files[0];if(!f)return;try{let j=JSON.parse(await f.text()),arr=Array.isArray(j)?j:j.data;if(!Array.isArray(arr))throw 0;if(confirm('Restaurar vai substituir os registros atuais. Continuar?')){data=arr;persist();render();toast('Backup restaurado.')}}catch(_){alert('Arquivo de backup inválido.')}e.target.value=''});
+$('wipeBtn').addEventListener('click',()=>{if(confirm('Apagar todos os registros? Faça backup antes.')){data=[];persist();render();toast('Todos os registros foram apagados.')}});
+$('saleDate').value=today();$('expenseDate').value=today();$('billMonth').value=monthNow();render();
+let lastAutoDate=today();
+setInterval(()=>{const current=today();if(current!==lastAutoDate){if($('saleDate').value===lastAutoDate||!$('saleDate').value)$('saleDate').value=current;if($('expenseDate').value===lastAutoDate||!$('expenseDate').value)$('expenseDate').value=current;$('billMonth').value=monthNow();lastAutoDate=current;render();}},30000);
+let deferredPrompt=null;const installBtn=$('installBtn');window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.classList.add('show')});installBtn.addEventListener('click',async()=>{if(deferredPrompt){deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.classList.remove('show')}else{alert('Para instalar: publique este app no GitHub Pages. No Chrome/Edge, abra o site e use o ícone Instalar na barra de endereço ou Menu → Instalar app. No celular, use Menu → Adicionar à tela inicial.')}});window.addEventListener('appinstalled',()=>{installBtn.classList.remove('show');toast('Aplicativo instalado!')});
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body></html>
